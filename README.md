@@ -5,6 +5,7 @@
 - journal
 
 # How to run ?
+-----------
 1-First clone the project.
 2-Navigate to the project directory (cd your-project).
 3-Create a copy of the .env.example file and rename it to .env.
