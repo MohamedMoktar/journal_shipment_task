@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layout')
 
 @section('content')
     <!--begin::Post-->
@@ -12,14 +12,12 @@
                     <!--begin::Page title-->
                     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                         <!--begin::Title-->
-                        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">{{__('Users')}} </h1>
+                        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">{{__('Shipments')}} </h1>
                         <!--end::Title-->
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                             <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted">
-                                <a href="{{route('dashboard')}}" class="text-muted text-hover-primary">{{__('Dashboard')}}</a>
-                            </li>
+                           
                             <!--end::Item-->
                             <!--begin::Item-->
                             <li class="breadcrumb-item">
@@ -27,7 +25,7 @@
                             </li>
                             <!--end::Item-->
                             <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted"> {{__('Users')}}</li>
+                            <li class="breadcrumb-item text-muted"> {{__('Shipments')}}</li>
                             <!--end::Item-->
                         </ul>
                         <!--end::Breadcrumb-->
@@ -38,9 +36,9 @@
 
                         <!--begin::Primary button-->
 
-                        <a href="{{ route('users') }}" class="btn btn-primary">
+                        <a href="{{ route('shipments') }}" class="btn btn-primary">
 
-                            <!--end::Svg Icon-->{{ __('View Users') }}
+                            <!--end::Svg Icon-->{{ __('View Shipment') }}
                         </a>
 
 
@@ -58,7 +56,7 @@
                 <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
                     <!--begin::Card title-->
                     <div class="card-title m-0">
-                        <h3 class="fw-bolder m-0">{{ __('Edit User') }}</h3>
+                        <h3 class="fw-bolder m-0">Edit Shipment</h3>
                     </div>
                     <!--end::Card title-->
                 </div>
@@ -77,9 +75,9 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
                                     <!--begin::Image input-->
-                                    <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url("{{ assetsMetronic('media/avatars/blank.png') }}")">
+                                    <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url("{{ asset('public/assets/media/avatars/blank.png') }}")">
                                         <!--begin::Preview existing avatar-->
-                                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{$user->image}}')"></div>
+                                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{asset('/public/images/shipments/'. $shipment->image) }}')"></div>
                                         <!--end::Preview existing avatar-->
                                         <!--begin::Label-->
                                         <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="{{ __('Change avatar') }}">
@@ -110,108 +108,70 @@
                             </div>
                             <!--end::Input group-->
 
-                            <!--begin::Input group-->
-                            <div class="row mb-6">
+                             <!--begin::Input group-->
+                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('first_name') }}</label>
+                                <label class="col-lg-4 col-form-label  fw-bold fs-6">Code</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="name" class="form-control form-control-lg form-control-solid" placeholder="{{ __('first_name') }}" value="{{$user->name}}" />
+                                    <input type="text" name="code" class="form-control form-control-lg form-control-solid" placeholder="Code" value="{{$shipment->code}}" />
+                                </div>
+                                <!--end::Col-->
+                            </div>
+
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label  fw-bold fs-6">Shipper</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8 fv-row">
+                                    <input type="text" name="shipper" class="form-control form-control-lg form-control-solid" placeholder="Shipper" value="{{$shipment->shipper}}" />
+                                </div>
+                                <!--end::Col-->
+                            </div>
+
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label  fw-bold fs-6">Weight</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8 fv-row">
+                                    <input type="text" name="weight" class="form-control form-control-lg form-control-solid" placeholder="Weight" value="{{$shipment->weight}}" />
                                 </div>
                                 <!--end::Col-->
                             </div>
                             
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('Address') }}</label>
+                                <label class="col-lg-4 col-form-label  fw-bold fs-6">Description</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="address" class="form-control form-control-lg form-control-solid" placeholder="{{ __('Address') }}" value="{{$user->address}}" />
+                                    <input type="text" name="description" class="form-control form-control-lg form-control-solid" placeholder="Description" value="{{$shipment->description}}" />
                                 </div>
                                 <!--end::Col-->
                             </div>
-                
-                            <!--begin::Input group-->
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('phone') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="phone" class="form-control form-control-lg form-control-solid" placeholder="{{ __('Phone') }}" value="{{$user->phone}}" />
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Input group-->
 
+                           
+                            @if($shipment->status != 'Done')
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label   fw-bold fs-6">{{ __('Email') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="email" id="dddd" class="form-control form-control-lg form-control-solid" placeholder="{{ __('Email') }}" value="{{$user->email}}"  autocomplete="off" />
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('Birthdate') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="birthdate"  id="kt_datepicker" class="form-control form-control-lg form-control-solid" placeholder="{{ __('Birthdate') }}" value="{{$user->birthdate}}" />
-                                </div>
-                                <!--end::Col-->
-                            </div>
-    
-                            <!--begin::Input group-->
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('Status') }}</label>
+                                <label class="col-lg-4 col-form-label  fw-bold fs-6">{{ __('Status') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <select name="status" aria-label="{{ __('Select an Status') }}" data-control="select2" data-placeholder="{{ __('Select an Status') }}.." class="form-select form-select-solid form-select-lg">
-                                        <option value="active" {{ $user->status == 'active' ? 'selected' : ''}}>{{ __('Active') }}</option>
-                                        <option value="not_active" {{ $user->status == 'not_active' ? 'selected' : ''}}>{{ __('Not Active') }}</option>
-                                        <option value="banned" {{ $user->status == 'banned' ? 'selected' : ''}}>{{ __('Banned') }}</option>
+                                        <option value="Pending" {{ $shipment->status == 'Pending' ? 'selected' : ''}}>{{ __('Pending') }}</option>
+                                        <option value="Progress" {{ $shipment->status == 'Progress' ? 'selected' : ''}}>{{ __('Progress') }}</option>
+                                        <option value="Done" {{ $shipment->status == 'Done' ? 'selected' : ''}}>{{ __('Done') }}</option>
                                     </select>
                                 </div>
                                 <!--end::Col-->
                             </div>
-                            <!--end::Input group-->
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('residency status') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                <select name="residency_status" aria-label="{{ __('residency status') }}" data-control="select2" data-placeholder="{{ __('Select an Status') }}.." class="form-select form-select-solid form-select-lg">
-                                    <option value="citizen" {{ $user->residency_status == 'citizen' ? 'selected' : ''}}>{{ __('citizen') }}</option>
-                                    <option value="resident" {{ $user->residency_status == 'resident' ? 'selected' : ''}}>{{ __('resident') }}</option>
-                                    <option value="visitor" {{ $user->residency_status == 'visitor' ? 'selected' : ''}}>{{ __('visitor') }}</option>
-                                </select>
-                                <!--end::Col-->
-                            </div>
-                        </div>
-
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('residency number') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="residency_number" id="" class="form-control form-control-lg form-control-solid" placeholder="{{ __('residency number') }}" value="" />
-                                </div>
-                                <!--end::Col-->
-                            </div>
+                           @endif
+                          
 
                         </div>
                         <!--end::Card body-->
@@ -223,7 +183,7 @@
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                 </span>
                             </button>
-                            <a href="{{ route('users') }}" class="btn btn-danger mx-2">{{ __('Back') }}</a>
+                            <a href="{{ route('shipments') }}" class="btn btn-danger mx-2">{{ __('Back') }}</a>
                         </div>
                         <!--end::Actions-->
                     </form>
@@ -248,10 +208,7 @@
         }
     });
 
-    $("#kt_datepicker").flatpickr({
-        enableTime: false,
-        dateFormat: "Y-m-d",
-    });
+  
     
 
     var KTAccountSettingsProfileDetails = function() {
@@ -261,22 +218,7 @@
                 e = document.getElementById("kt_account_profile_details_form"),
                 i = document.querySelector("#kt_account_profile_details_submit"),
                 t = FormValidation.formValidation(e, {
-                    fields: {
-                        name: {
-                            validators: {
-                                notEmpty: {
-                                    message: "{{ __('Name is required') }}"
-                                }
-                            }
-                        },
-                        phone: {
-                            validators: {
-                                notEmpty: {
-                                    message: "{{ __('Phone is required') }}"
-                                }
-                            }
-                        },
-                    },
+                   
                     plugins: {
                         trigger: new FormValidation.plugins.Trigger,
                         submitButton: new FormValidation.plugins.SubmitButton,
@@ -297,7 +239,7 @@
                             i.disabled = !0,
                             $.ajax({
                                 type: "POST",
-                                url: "{{ route('update_user', $user->id) }}",
+                                url: "{{ route('updateShipment', $shipment->id) }}",
                                 data: formData,
                                 processData: false,
                                 contentType: false,

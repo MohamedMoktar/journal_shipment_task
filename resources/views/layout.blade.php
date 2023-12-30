@@ -1,8 +1,6 @@
-@php
-$dir = getLanguageDirection();
-@endphp
+
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="{{ $dir }}" direction="{{ $dir }}" style="direction: {{ $dir }}">
+<html>
 {{-- begin::Head --}}
 <head>
     <meta charset="utf-8"/>
@@ -12,15 +10,15 @@ $dir = getLanguageDirection();
     <link rel="canonical" href=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{ assetsMetronic('media/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('public/assets/media/logos/favicon.ico') }}" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 
-    <link href="{{ assetsMetronic('plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css"/>
-    @if ($dir == 'rtl')
-        <link href="{{ assetsMetronic('plugins/global/plugins.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ assetsMetronic('plugins/custom/prismjs/prismjs.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ assetsMetronic('css/style.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('public/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css"/>
+    
+        <link href="{{ asset('public/assets/plugins/global/plugins.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/assets/plugins/custom/prismjs/prismjs.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/assets/css/style.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,14 +57,12 @@ $dir = getLanguageDirection();
                 float: right !important;
             }
         </style>
-        <link href="{{ asset('public/dashboard/custom.css') }}" rel="stylesheet" type="text/css"/>
-    @else
-        <link href="{{ assetsMetronic('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
-    @endif
-    <link href="{{ assetsMetronic('css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/custom.css') }}" rel="stylesheet" type="text/css"/>
+  
+    <link href="{{ asset('public/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="{{  assetsMetronic('plugins/morris/morris.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{  asset('public/assets/plugins/morris/morris.css') }}" rel="stylesheet" type="text/css" />
 
 
 
@@ -80,35 +76,36 @@ $dir = getLanguageDirection();
     <div class="d-flex flex-column flex-root">
         <div class="page d-flex flex-row flex-column-fluid">
 
-            @include('admin.template.sidebar')
+            @include('template.sidebar')
 
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper" style="padding-top: 45px !important;">
-                @include('admin.template.header')
+                @include('template.header')
+              
 
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
                     @yield('content')
                 </div>
 
-                @include('admin.template.footer')
+                @include('template.footer')
 
             </div>
         </div>
     </div>
 
-    <script src="{{ assetsMetronic('plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ assetsMetronic('js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset('public/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('public/assets/js/scripts.bundle.js') }}"></script>
 
-    <script src="{{ assetsMetronic('plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
+    <script src="{{ asset('public/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
 
-    <script src="{{ assetsMetronic('js/custom/widgets.js') }}"></script>
-    <script src="{{ assetsMetronic('js/custom/apps/chat/chat.js') }}"></script>
-    <script src="{{ assetsMetronic('js/custom/modals/create-app.js') }}"></script>
+    <script src="{{ asset('public/assets/js/custom/widgets.js') }}"></script>
+    <script src="{{ asset('public/assets/js/custom/apps/chat/chat.js') }}"></script>
+    <script src="{{ asset('public/assets/js/custom/modals/create-app.js') }}"></script>
 
-    <script src="{{ assetsMetronic('plugins/morris/morris.min.js') }}" type="text/javascript"></script>
-    <script src="{{ assetsMetronic('plugins/morris/raphael-min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/assets/plugins/morris/morris.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/assets/plugins/morris/raphael-min.js') }}" type="text/javascript"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js" type="text/javascript"></script>
-    <script src="{{ assetsMetronic('js/components/form-repeater.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/assets/js/components/form-repeater.js') }}" type="text/javascript"></script>
 
 
     {{--  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>  --}}

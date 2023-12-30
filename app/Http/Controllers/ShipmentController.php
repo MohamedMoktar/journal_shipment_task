@@ -5,21 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Journal;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 class ShipmentController extends Controller
 {
    public function index(){
-    $shipments=Shipment::all();
+    $shipments=Shipment::paginate(20);
 
     //index page
-    return view('index', compact('shipments'));
+    return view('shipments.index', compact('shipments'));
    }
 
    public function create(){
+
     //create shipment page
-    return view('create');
+    return view('shipments.create');
+
    }
 
    public function store( Request $request){
@@ -73,19 +76,20 @@ class ShipmentController extends Controller
     $shipment=Shipment::find($id);
 
     //edit page
-    return view('edit', compact('shipment'));
+    return view('shipments.edit', compact('shipment'));
    }
 
    public function update(Request $request ,$id){
-    $shipment=Shipment::find($id);
+
+     $shipment=Shipment::find($id);
      //vaildate the request
      $validator = Validator::make($request->all(), [
-        'code' => 'required|string',
-        'shipper' => 'required|string',
-        'image' => 'required|image',
-        'weight' => 'required|numeric',
-        'description' => 'required|string',
-        'status' => ['required', Rule::in(['Pending', 'Progress','Done'])],
+        'code' => Rule::unique('shipments')->ignore($shipment->id, 'id'),
+        'shipper' => 'string',
+        'image' => 'image|mimes:jpeg,png,jpg,gif',
+        'weight' => 'numeric',
+        'description' => 'string',
+        'status' => [ Rule::in(['Pending', 'Progress','Done'])],
     ]);
 
     if($validator->fails())
@@ -127,6 +131,7 @@ class ShipmentController extends Controller
         $shipment->save();
     }
    
+   
     if($shipment->status=="Done"){
          //create 3 Journals
         Journal::create([
@@ -147,8 +152,7 @@ class ShipmentController extends Controller
         ]
         );
     }
-
-
+  
 
     $message = 'Updated Successfully';
     $arr = array('status' => 'success', 'message' => $message, 'data' => [], 'status_code' => 200);
@@ -158,9 +162,9 @@ class ShipmentController extends Controller
 
    }
 
-   public function destroy(Request $request,$id){
+   public function destroy(Request $request){
 
-    $shipment=Shipment::find($id);
+    $shipment=Shipment::find($request->id);
 
     $shipment->delete();
 
@@ -169,4 +173,38 @@ class ShipmentController extends Controller
 
     return response()->json($arr);
    }
+
+   public function filter(Request $request)
+   {
+
+    $status = $request->input('status'); 
+
+    // Start building the query
+    $query = Shipment::query();
+
+    // Apply filters
+    if ($status) {
+        $query->where('status', $status);
+         // Get the filtered  shipments
+        $shipments = $query->paginate(20);
+
+        return view('shipments.index', compact('shipments'));
+    }
+
+   
+   }
+
+   public function groub(Request $request){
+  
+    $query = Shipment::query();
+   
+     // Group by shipper and retrieve shipper name and count of shipments
+         $query->select('shipper', DB::raw('COUNT(*) as shipment_count'))
+         ->groupBy('shipper');
+         $shipments = $query->paginate(20);
+         return view('shipments.group', compact('shipments'));
+
+   }
+  
+
 }

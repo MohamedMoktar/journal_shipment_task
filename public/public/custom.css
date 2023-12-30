@@ -1,0 +1,140 @@
+@media (min-width: 992px) {
+    .brand {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 23px;
+    }
+    #kt_header_mobile {
+        display: none;
+    }
+}
+
+.brand-logo {
+    width: 30px;
+}
+
+.aside .aside-menu.ps > .ps__rail-y > .ps__thumb-y {
+    height: 0 !important;
+}
+.topbar > div,
+.topbar > li {
+    margin: 0 15px;
+}
+
+.topbar > li {
+    list-style: none;
+}
+
+#header_notification_bar ul .notifications li {
+    list-style: none;
+}
+
+#header_notification_bar ul .notifications li a {
+    display: flex;
+    width: 100%;
+    padding: 5px 10px;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+}
+#header_notification_bar ul .notifications li a span {
+    margin-left: 15px;
+}
+#header_notification_bar ul .notifications > li > a > span:first-child {
+    margin-right: 48px;
+}
+#header_notification_bar ul .notifications li a span .label {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% !important;
+}
+#header_notification_bar ul .notifications li a span .label i {
+    color: #FFFFFF;
+    margin-right: 4px;
+}
+.aside-menu .menu-nav .menu-inner, .aside-menu .menu-nav .menu-submenu {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .aside-fixed .wrapper {
+        padding-left: 0 !important;
+    }
+}
+@media (min-width: 992px) {
+    .aside-enabled .header.header-fixed {
+        left: 0 !important;
+    }
+}
+
+#kt_aside_menu li .menu-link {
+    display: flex;
+    align-items: center;
+}
+.menu-link .menu-arrow {
+    height: 10px;
+}
+.menu-link .menu-arrow:after {
+    height: 10px;
+}
+.menu-link .menu-arrow:before {
+    content: '' !important;
+}
+[direction="rtl"] .aside-menu .menu-nav > .menu-item > .menu-heading .menu-arrow:before,
+[direction="rtl"] .aside-menu .menu-nav > .menu-item > .menu-link .menu-arrow:before {
+    content: '' !important;
+}
+
+@media (min-width: 992px) {
+    [direction="rtl"] body.aside-minimize #kt_wrapper {
+        padding-right: 0;
+    }
+}
+
+[direction='rtl'] .portlet>.portlet-title>.caption {
+    float: right;
+}
+[direction='rtl'] .apexcharts-toolbar {
+    right: 3px;
+}
+[direction='rtl'] button.accordion {
+    text-align: right;
+}
+[direction='rtl'] .form-group .image-input {
+    display: block;
+}
+[direction='rtl'] .bootstrap-timepicker-widget {
+    right: 311.25px;
+}
+[direction='rtl'] .bootstrap-timepicker-widget table input.bootstrap-timepicker-hour,
+[direction='rtl'] .bootstrap-timepicker-widget table input.bootstrap-timepicker-minute,
+[direction='rtl'] .bootstrap-timepicker-widget table input.bootstrap-timepicker-meridian {
+    margin-right: -15px;
+}
+.badge {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+[direction='rtl'] #kt_header {
+    left: 0 !important;
+}
+
+[direction='rtl'] .ms-auto {
+    margin-left: unset !important;
+}
+
+[direction='rtl'] .form-control.form-control-solid {
+    text-align: right;
+}
+
+[direction='rtl'] .position-relative {
+    direction: ltr;
+}
+
+[direction='rtl'] .form-check.form-check-custom .form-check-label {
+    margin-right: 3.55rem;
+}
+
+[direction='rtl'] .menu-item {
+    text-align: right;
+}

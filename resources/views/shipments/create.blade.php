@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layout')
 
 @section('content')
     <!--begin::Post-->
@@ -12,14 +12,12 @@
                     <!--begin::Page title-->
                     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                         <!--begin::Title-->
-                        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">{{__('Users')}} </h1>
+                        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Shipments </h1>
                         <!--end::Title-->
                         <!--begin::Breadcrumb-->
                         <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                             <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted">
-                                <a href="{{route('dashboard')}}" class="text-muted text-hover-primary">{{__('Dashboard')}}</a>
-                            </li>
+                           
                             <!--end::Item-->
                             <!--begin::Item-->
                             <li class="breadcrumb-item">
@@ -27,7 +25,7 @@
                             </li>
                             <!--end::Item-->
                             <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted"> {{__('Users')}}</li>
+                            <li class="breadcrumb-item text-muted">Shipments</li>
                             <!--end::Item-->
                         </ul>
                         <!--end::Breadcrumb-->
@@ -38,9 +36,9 @@
 
                         <!--begin::Primary button-->
 
-                        <a href="{{ route('users') }}" class="btn btn-primary">
+                        <a href="" class="btn btn-primary">
 
-                            <!--end::Svg Icon-->{{ __('View Users') }}
+                            <!--end::Svg Icon-->Shipments
                         </a>
 
 
@@ -58,7 +56,7 @@
                 <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
                     <!--begin::Card title-->
                     <div class="card-title m-0">
-                        <h3 class="fw-bolder m-0">{{ __('Add User') }}</h3>
+                        <h3 class="fw-bolder m-0">Add Shipment</h3>
                     </div>
                     <!--end::Card title-->
                 </div>
@@ -73,17 +71,17 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('Preview Image') }}</label>
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Image</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
                                     <!--begin::Image input-->
-                                    <div class="image-input image-input-outline fv-row" data-kt-image-input="true" style="background-image: url('{{ assetsMetronic('media/avatars/blank.png')}}')">
+                                    <div class="image-input image-input-outline fv-row" data-kt-image-input="true" style="background-image: url('{{ asset('public/assets/media/avatars/blank.png')}}')">
                                         <!--begin::Preview existing avatar-->
-                                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{ assetsMetronic('media/avatars/blank.png') }}')"></div>
+                                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{ asset('public/assets/media/avatars/blank.png') }}')"></div>
                                         <!--end::Preview existing avatar-->
                                         <!--begin::Label-->
-                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="{{ __('Change avatar') }}">
+                                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                             <i class="bi bi-pencil-fill fs-7"></i>
                                             <!--begin::Inputs-->
                                             <input type="file" name="image" accept=".jpg, .jpeg, .png" />
@@ -92,19 +90,19 @@
                                         </label>
                                         <!--end::Label-->
                                         <!--begin::Cancel-->
-                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="{{ __('Cancel avatar') }}">
+                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
                                             <i class="bi bi-x fs-2"></i>
                                         </span>
                                         <!--end::Cancel-->
                                         <!--begin::Remove-->
-                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="{{ __('Remove avatar') }}">
+                                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
                                             <i class="bi bi-x fs-2"></i>
                                         </span>
                                         <!--end::Remove-->
                                     </div>
                                     <!--end::Image input-->
                                     <!--begin::Hint-->
-                                    <div class="form-text">{{ __('Allowed file types: png, jpg, jpeg.') }}</div>
+                                    <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
                                     <!--end::Hint-->
                                 </div>
                                 <!--end::Col-->
@@ -114,88 +112,44 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('first_name') }}</label>
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Code</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="name" class="form-control form-control-lg form-control-solid" placeholder="{{ __('first_name') }}" value="" />
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                          
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('Address') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="address" class="form-control form-control-lg form-control-solid" placeholder="{{ __('address') }}" value="" />
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('Phone') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="phone" class="form-control form-control-lg form-control-solid" placeholder="{{ __('Phone') }}" value="" />
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label   fw-bold fs-6">{{ __('Email') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="email" id="dddd" class="form-control form-control-lg form-control-solid" placeholder="{{ __('Email') }}" value="" autocomplete="off"  />
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Input group-->
-
-
-                            <!--begin::Input group-->
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('Birthdate') }}</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="birthdate" id="kt_datepicker" class="form-control form-control-lg form-control-solid" placeholder="{{ __('Birthdate') }}" value="" />
+                                    <input type="text" name="code" class="form-control form-control-lg form-control-solid" placeholder="Code" value="" />
                                 </div>
                                 <!--end::Col-->
                             </div>
 
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('residency status') }}</label>
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Shipper</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                <select name="residency_status" aria-label="{{ __('residency status') }}" data-control="select2" data-placeholder="{{ __('Select an Status') }}.." class="form-select form-select-solid form-select-lg">
-                                    <option value="citizen" >{{ __('citizen') }}</option>
-                                    <option value="resident" >{{ __('resident') }}</option>
-                                    <option value="visitor" >{{ __('visitor') }}</option>
-                                </select>
+                                    <input type="text" name="shipper" class="form-control form-control-lg form-control-solid" placeholder="Shipper" value="" />
+                                </div>
                                 <!--end::Col-->
                             </div>
-                        </div>
 
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">{{ __('residency number') }}</label>
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Weight</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="residency_number"  class="form-control form-control-lg form-control-solid" placeholder="{{ __('residency number') }}" value="" />
+                                    <input type="text" name="weight" class="form-control form-control-lg form-control-solid" placeholder="Weight" value="" />
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Description</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8 fv-row">
+                                    <input type="text" name="description" class="form-control form-control-lg form-control-solid" placeholder="Description" value="" />
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -206,11 +160,11 @@
                         <div class="card-footer d-flex justify-content-end py-6 px-9">
                             <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">
                                 <span class="indicator-label">{{  __('Save') }}</span>
-                                <span class="indicator-progress">{{ __('Please wait') }}...
+                                <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                 </span>
                             </button>
-                            <a href="{{ route('users') }}" class="btn btn-danger mx-2">{{ __('Back') }}</a>
+                            <a href="{{route('shipments')}}" class="btn btn-danger mx-2">Back</a>
                         </div>
                         <!--end::Actions-->
                     </form>
@@ -235,10 +189,7 @@
         }
     });
 
-    $("#kt_datepicker").flatpickr({
-        enableTime: false,
-        dateFormat: "Y-m-d",
-    });
+  
 
     var KTAccountSettingsProfileDetails = function() {
         var e, t, formData, i;
@@ -254,21 +205,21 @@
                                 file: {
                                     extension: 'jpg,jpeg,png',
                                     type: 'image/jpeg,image/png',
-                                    message: "{{ __('The selected file is not valid') }}"
+                                    message: "The selected file is not valid"
                                 },
                             }
                         },
-                        name: {
+                        code: {
                             validators: {
                                 notEmpty: {
-                                    message: "{{ __('Name is required') }}"
+                                    message: "Code is required"
                                 }
                             }
                         },
-                        phone: {
+                        shipper: {
                             validators: {
                                 notEmpty: {
-                                    message: "{{ __('Phone is required') }}"
+                                    message: "Shipper is required"
                                 }
                             }
                         },
@@ -293,7 +244,7 @@
                             i.disabled = !0,
                             $.ajax({
                                 type: "POST",
-                                url: "{{ route('store_user') }}",
+                                url: "{{ route('storeShipment') }}",
                                 data: formData,
                                 processData: false,
                                 contentType: false,
@@ -308,7 +259,7 @@
                                                 text: data.message,
                                                 icon: "success",
                                                 buttonsStyling:!1,
-                                                confirmButtonText:"{{ __('Ok, got it!') }}",
+                                                confirmButtonText:"Ok, got it!",
                                                 customClass:{
                                                     confirmButton:"btn btn-primary"
                                                 }
@@ -323,7 +274,7 @@
                                             text: data.message,
                                             icon: "error",
                                             buttonsStyling: false,
-                                            confirmButtonText:"{{ __('Ok, got it!') }}",
+                                            confirmButtonText:"Ok, got it!",
                                             customClass: {
                                                 confirmButton: "btn font-weight-bold btn-light-primary"
                                             }
@@ -334,10 +285,10 @@
                                     i.removeAttribute("data-kt-indicator"),
                                     i.disabled = !1,
                                     Swal.fire({
-                                        text:"{{ __('Sorry, looks like there are some errors detected, please try again.') }}",
+                                        text:"Sorry, looks like there are some errors detected, please try again.",
                                         icon: "error",
                                         buttonsStyling: false,
-                                        confirmButtonText:"{{ __('Ok, got it!') }}",
+                                        confirmButtonText:"Ok, got it!",
                                         customClass: {
                                             confirmButton: "btn font-weight-bold btn-light-primary"
                                         }
@@ -348,10 +299,10 @@
                             i.removeAttribute("data-kt-indicator"),
                             i.disabled = !1,
                             swal.fire({
-                                text: "{{ __('Sorry, looks like there are some errors detected, please try again.') }}",
+                                text: "Sorry, looks like there are some errors detected, please try again.",
                                 icon: "error",
                                 buttonsStyling: !1,
-                                confirmButtonText: "{{ __('Ok, got it!') }}",
+                                confirmButtonText: "Ok, got it!",
                                 customClass: {
                                     confirmButton: "btn font-weight-bold btn-light-primary"
                                 }
@@ -367,13 +318,6 @@
 
     }));
 
-     $("#kt_datepicker").datepicker({
-        enableTime: false,
-        							rtl: KTUtil.isRTL(),
-        							todayHighlight: true,
-        							orientation: "bottom left",
-        							templates: arrows
-        						});  
 </script> 
 
 @endpush
