@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ ('dashboard') }}">
+                    <a class="menu-link" href="{{ route('addShipment') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ ('dashboard') }}">
+                    <a class="menu-link" href="{{route('editShipment') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
